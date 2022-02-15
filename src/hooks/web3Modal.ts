@@ -91,10 +91,11 @@ export function useWeb3Modal () {
             const signer = web3Provider.getSigner()
             const address = await signer.getAddress()
             const balance = await web3.eth.getBalance(address);
-
-            const network = await web3Provider.getNetwork()
+            const network = await web3Provider.getNetwork();
+            const chainInfo = getChainData(contractConfig.chainId)
             if(network.chainId!==contractConfig.chainId) {
-                setModalError ('Please switch network to Ethereum Mainnet')
+                console.log(chainInfo);
+                setModalError (`Please switch network to ${chainInfo?.name}`)
                 await switchNetwork(provider);
                 setState((prev)=>({
                     ...prev,

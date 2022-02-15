@@ -1,7 +1,59 @@
 .container{
   user-select: none;
+  font-family: "Roboto Mono";
+  font-size: 12px;
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: transparent;
+  background-image: linear-gradient(180deg, #FF0071 0%, #FF7800 100%);
+  .header{
+    min-height: 92px;
+    background-color: #46005D;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    gap: 10px;
+    .logo{
+      height: 75px;
+    }
+    .home{
+      cursor: pointer;
+      color: white;
+      font-weight: 400;
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .iconGroup{
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      margin-left: auto;
+      svg{
+        cursor: pointer;
+        width: 15px;
+      }
+
+    }
+    .connectButton{
+      font-family: "Roboto Mono";
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 20px;
+      padding: 10px 30px;
+      text-align: center;
+      min-width: 150px;
+      cursor: pointer;
+    }
+    .connectButton:hover{
+      transform: translateY(-3px);
+      background-color: white;
+      color: #46005D;
+    }
+  }
 
   .spinner{
     display: block;
@@ -89,65 +141,156 @@
   }
   .wrapper{
     box-sizing: border-box;
-    height: inherit;
     padding: 30px;
     display: flex;
-    flex-direction: column;
     align-items: center;
     gap: 50px;
-    .connectButton{
-      background-color: #3f84eb;
-      padding: 10px 30px;
-      border-radius: 5px;
-      text-align: center;
-      max-width: 250px;
-      align-self: flex-end;
-    }
-    .connectButton:hover{
-      transform: translateY(-1px);
-      cursor: pointer;
+    .images{
+      flex-basis: 70%;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+      img{
+        width: 250px;
+        border-radius: 20px;
+      }
     }
     .mintControl{
       display: flex;
+      flex-direction: column;
       justify-content: flex-start;
       align-items: center;
-      .input{
-        height: 45px;
-        width: 100px;
-        font-size: 18px;
-        margin-right: 50px;
-        border-radius: 5px;
-      }
-      .button{
-        user-select: none;
-        background-color: #3f84eb;
-        width: 205px;
-        height: 50px;
-        font-size: 14px;
-        font-weight: 400;
-        letter-spacing: 0.8px;
+      .mintInput{
         display: flex;
+        justify-content: flex-start;
         align-items: center;
-        justify-content: center;
-        border-radius: 5px;
-        cursor: pointer;
+        gap: 30px;
+        .input{
+          height: 50px;
+          width: 80px;
+          font-size: 18px;
+          border-radius: 20px;
+          border: none;
+          text-align: right;
+        }
+        .button{
+          font-family: "Roboto Mono";
+          user-select: none;
+          background-color: black;
+          color: white;
+          width: 205px;
+          height: 50px;
+          font-size: 14px;
+          font-weight: 400;
+          letter-spacing: 0.8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          border-radius: 20px;
+          cursor: pointer;
+        }
+        .button:hover{
+          background-color: white;
+          color: #46005D;
+          transform: translateY(-3px);
+        }
+        .button[disabled]{
+          transform: none;
+          background-color: black;
+          color: white;
+          opacity: 0.4;
+          cursor: unset;
+        }
       }
-      .button:hover{
-        transform: translateY(-2px);
+      .error{
+        color: white;
+        font-size: 18px;
+        margin-top: 15px;
+        font-weight: 400;
+        text-align: center;
       }
     }
-    .error{
-      color: #f65959;
-      margin-top: 15px;
-      font-weight: 400;
-    }
-    .link{
-      margin-top: auto;
-      display: flex;
-      gap:10px;
-      align-items: center;
+  }
+  .link{
+    padding: 30px;
+    margin-top: auto;
+    display: flex;
+    gap:10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+}
+@media (max-width: 1260px) {
+  .container{
+    .wrapper{
+      .images{
+        img{
+          width: 180px;
+        }
+      }
     }
   }
 }
 
+@media (max-width: 860px) {
+  .container{
+    .wrapper{
+      .images{
+        img{
+          width: 120px;
+        }
+      }
+    }
+  }
+}
+@media (max-width: 720px) {
+  .container{
+    .wrapper{
+      flex-direction: column-reverse;
+      .images{
+        justify-content: space-between;
+        img{
+          width: 160px;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 500px) {
+  .container{
+    .header{
+      flex-direction: column;
+      .iconGroup{
+        display: none;
+      }
+    }
+    .wrapper{
+      flex-direction: column-reverse;
+      .images{
+        gap: 10px;
+        img{
+          width: 80px;
+        }
+      }
+      .mintControl{
+        .mintInput{
+          justify-content: center;
+          gap:15px;
+          flex-direction: column;
+        }
+        .error{
+          color: white;
+          font-size: 18px;
+          margin-top: 15px;
+          font-weight: 400;
+          text-align: center;
+        }
+      }
+    }
+  }
+}
 
